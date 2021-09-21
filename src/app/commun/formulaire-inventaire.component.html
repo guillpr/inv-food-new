@@ -1,0 +1,87 @@
+<app-entete></app-entete>
+<ngx-spinner></ngx-spinner>
+<form [formGroup]="formulaire">
+    <div class="row mt-2">
+        <div class="col-12">
+            <label class="labTitre">Ajouter produit dans l'inventaire</label>
+        </div>
+    </div>
+<div class="row mt-4" *ngIf="this.facadeService.listeType">
+    <div class="col-12 col-xl-2"><label class="labTypeProd">Type de produit</label></div>
+    <div class="col-12 col-xl-3">
+        <select class="ddProduits" name="produits" id="produits" formControlName="typeProduit">
+            <option selected value="">--Sélectionnez--</option>
+            <option *ngFor="let r of this.facadeService.listeType;let i=index"  [value]="r.nom">
+               
+            {{r.nom}}
+            
+            </option>
+            <!-- <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option> -->
+          </select>
+    </div>
+    <div class="col-12 col-xl-1 btnPlus"><button 
+        class="btn btn-success" 
+        (click)="ajouterProduit()" 
+         matTooltip="Ajouter produits"
+         matTooltipPosition="above" >+</button>
+        </div>
+    <div *ngIf="ajoutProduit" class="col-12 col-xl-4"><input formControlName="nouveauProduit"> 
+        <i class="fas fa-check fa-2x greenCheck"
+        (click)="ajouterNouveauProduit()"
+         matTooltip="Sauvegarder changements"
+         [matTooltipClass]="'ttGreen'"></i>
+
+
+        <i class="fas fa-times-circle fa-2x xRed" 
+        (click)="supprimerChangements()"
+         matTooltip="Supprimer changements"
+         matTooltipClass="ttRed"></i>   
+    </div>
+</div>
+<div class="row mt-2">
+<div class="col-12 col-xl-2">
+    <label class="labTypeProd">Quantité</label>
+</div>
+<div class="col-12 col-xl-3">
+    <input class="inputQuantite" formControlName="quantite" >
+    <select class="ddUnite" formControlName="unite">
+        <option selected value="">Unité</option>
+        <option value="Grammes">Grammes</option>
+        <option value="Kilo">Kilogrammes</option>
+        <option value="Onze">Onze</option>
+    </select >
+</div>
+</div>
+<div class="row mt-2">
+    <div class="col-12 col-xl-2">
+        <label class="labTypeProd">Description</label>
+    </div>
+    <div class="col-12 col-xl-3">
+        <input class="inputDescription" formControlName="description" >
+    </div>
+</div>
+<div class="row mt-2">
+    <div class="col-12 col-xl-2">
+        <label class="labTypeProd">Date</label>
+    </div>
+    <div class="col-12 col-xl-3">
+        <input type="date" formControlName="date">
+    </div>
+</div>
+<div class="row mt-2">
+    <div class="col-12 col-xl-2"></div>
+    <div class="col-12 col-xl-3">
+        <button 
+        (click)="soumettreProduit()"
+        type="button" 
+        class="btn btn-primary btnAjtInv">
+        Ajouter à l'inventaire
+        </button>
+    </div>
+</div>
+
+
+</form>
+

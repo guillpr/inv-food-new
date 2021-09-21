@@ -1,0 +1,47 @@
+<app-entete></app-entete>
+<div class="row">
+<div class="col-12"><label class="titreInventaire">Inventaire</label></div>
+</div>
+<div class="table-responsive">
+<table class="table">
+    <thead>
+      <tr>
+        
+        <th scope="col">Nom</th>
+        <th scope="col" class="centre">Quantité</th>
+        <th scope="col">Description</th>
+        <th scope="col" class="centre">Date</th>
+        <th class="centre">Suppression </th>
+    
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let listeProd of this.facadeService.listeProduit">
+       
+        <td >{{listeProd.nom}}</td>
+        <td class="centre">
+            <div *ngIf="listeProd.quantite !== ''">{{listeProd.quantite}}</div>
+            <div *ngIf="listeProd.quantite === ''">-</div>
+        </td>
+        <td>
+            <div *ngIf="listeProd.description !== ''">{{listeProd.description}}</div>
+            <div *ngIf="listeProd.description === ''">-</div>
+            </td>
+         <td class="centre">
+            <div *ngIf="(listeProd.date | date: 'yyyy-MM-dd') > (0001-01-01 | date: 'yyyy-MM-dd')">{{listeProd.date | date:'yyyy-MM-dd'}}</div>
+            <div *ngIf="(listeProd.date | date: 'yyyy-MM-dd') <= (0001-01-01 | date: 'yyyy-MM-dd')">-</div>
+          
+        </td> 
+        <td class="centre">
+          <i 
+          (click)="supprimerProduit(listeProd.id)"
+          class="fas fa-times-circle fa-2x xRed" ></i>
+        </td>
+       
+      </tr>
+      <tr>
+      </table>
+</div>
+<br>
+      
+ 

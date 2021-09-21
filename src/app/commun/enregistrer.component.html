@@ -1,0 +1,68 @@
+<app-entete></app-entete>
+<form [formGroup]="formulaire" >
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="card">
+                <div>{{this.formulaire.controls.courriel.errors}}</div>
+                <form onsubmit="event.preventDefault()" class="box">
+                    <h1>Créer un compte</h1>
+                    <p class="text-muted">Veuillez entrer vos informations</p> 
+                    <input type="text" name="" placeholder="Nom" formControlName="nomUsager">
+                    <div >
+                        <label class="redText" 
+                        *ngIf="this.formulaire.controls.nomUsager.errors&&this.formulaire.controls.nomUsager.dirty">
+                        Le nom ne doit pas dépasser 50 caractères.
+                    </label>
+                    </div>
+                    <input type="text" name="" placeholder="Prénom" formControlName="prenomUsager">
+                    <div >
+                        <label class="redText" 
+                        *ngIf="this.formulaire.controls.prenomUsager.errors&&this.formulaire.controls.prenomUsager.dirty">
+                        Le prénom ne doit pas dépasser 50 caractères.
+                    </label>
+                    </div>
+                    <input type="text" name=""  placeholder="Courriel" formControlName="courriel">
+                    <div >
+                        <label class="redText" 
+                        *ngIf="this.formulaire.controls.courriel.errors">
+                        Veuillez entrer un courriel valide exemple: courriel@test.com
+                    </label>
+                    </div>
+                     <input type="password" name="" placeholder="Mot de passe" formControlName="motPasse">
+                     <input type="password" name="" placeholder="Confirmation mot de passe" formControlName="motPasseConf">
+                     <div *ngIf="!this.formulaire.valid&& this.formulaire.errors">
+                         <label 
+                         class="redText"
+                         *ngIf="this.formulaire.errors.notSame
+                         &&this.formulaire.controls.motPasse.dirty
+                         &&this.formulaire.controls.motPasseConf.dirty">
+                         Les deux mot de passe ne sont pas identiques
+                        </label>
+                       </div>
+                       <div>
+                        <label 
+                        class="redText"
+                        *ngIf="this.formulaire.controls.motPasse.errors&& this.formulaire.controls.motPasse.dirty">
+                        Le mot de passe ne doit pas dépasser 10 caractères.
+                       </label>
+                      </div>
+                      <a class="forgot text-muted" href="#">Mot de passe oublié?</a>
+                       <input  
+                       [attr.disabled]="!this.formulaire.valid ? 'disabled':null"
+                       type="submit"
+                        (click)="soumettreForm()"
+                         name=""
+                          value="Soumettre">
+                    <div *ngIf="courrielUtilise === true" class="col-md-12 redText">
+                       Le courriel entré est déjà utilisé.
+                        <!-- <ul class="social-network social-circle">
+                            <li><a href="#" class="icoFacebook" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#" class="icoTwitter" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#" class="icoGoogle" title="Google +"><i class="fab fa-google-plus"></i></a></li>
+                        </ul> -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </form>

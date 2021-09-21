@@ -1,0 +1,55 @@
+.labTypeProd{
+    font-weight: bold;
+    margin-top: 5px;
+}
+.inputDescription{
+    width: 245px;
+}
+.labTitre{
+    font-weight: bold;
+    margin-top: 5px;
+    font-size: 16px;
+    text-decoration: underline;
+}
+.ddProduits{
+    margin-top:5px;
+    height: 26px;
+}
+.ddUnite{
+    height: 26px;
+    vertical-align: middle;
+}
+.btnAjoutProduit{
+    background-color:black;
+    color:white;
+    border:solid grey;
+}
+.greenCheck{
+    color:green;
+    padding-left: 10px;
+    position:relative;
+    top:5px;  
+}
+.xRed{
+    color:red;
+    padding-left: 15px;
+    position:relative;
+    top:5px;
+}
+.ttGreen{
+    background-color: green!important;
+}
+.ttRed{
+    background-color: red;
+}
+.inputQuantite{
+    width: 80px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+@media screen and (max-width: 1199px) {
+    .btnPlus, .btnAjtInv {
+     margin-top:10px;
+    }
+    
+  }

@@ -1,0 +1,56 @@
+<div class="row fondNoir">
+  
+  
+    <div class="col-2 col-xl-3">
+        <nav role="navigation">
+    
+            <div id="menuToggle" >
+              <!--
+              A fake / hidden checkbox is used as click reciever,
+              so you can use the :checked selector on it.
+              -->
+              <input #myCheck  type="checkbox" />
+              
+              <!--
+              Some spans to act as a hamburger.
+              
+              They are acting like a real hamburger,
+              not that McDonalds stuff.
+              -->
+              <span></span>
+              <span></span>
+              <span></span>
+              
+              <!--
+              Too bad the menu has to be inside of the button
+              but hey, it's pure CSS magic.
+              -->
+              <ul id="menu" >
+                <a href="#"><li>Connexion</li></a>
+                <a routerLink="/formulaireInventaire" (click)="resetCheck()" ><li>Ajouter produit dans l'inventaire</li></a>
+                <a routerLink="/tabInventaire" (click)="resetCheck()" ><li>Voir l'inventaire</li></a>
+                
+              </ul>
+            </div>
+          </nav>
+    </div>
+    <div class="col-8 col-xl-6 texteEntete">
+Application d'inventaire
+    </div>
+    <div class="col-2 col-xl-3 rightMiddle">
+      <span *ngIf="this.facadeService.connected">
+      <i 
+     
+      (click)="disconnect()"
+      matTooltip="Déconnexion"
+      matTooltipPosition="above"
+      class="fa fa-sign-out fa-3x" 
+      aria-hidden="true"></i>
+    </span>
+    </div>
+  
+</div>
+<div class="row mt-2">
+  <div class="col-6 col-md-10"><label class="bold" *ngIf="this.facadeService.listeUsageId">Bonjour {{this.facadeService.listeUsageId.prenomUsager}}</label></div>
+  <div class="col-6 col-md-2 right"><a routerLink="/enregistrer"><label class="inscriptionCss">Pas de compte?</label></a></div>
+  </div>
